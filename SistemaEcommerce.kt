@@ -1,7 +1,9 @@
-import src.menu.Menu.Companion.menu
+import src.estoque.Estoque
+import src.menu.Menu
 
 fun main() {
-    println("Boas vindas ao Seu Móvel E-commerce!")
-    menu()
+    println("Boas vindas ao Seu Estoque em dia!")
+    val estoque: Estoque = Estoque()
+    Menu().menuPrincipal(estoque)
 }
 

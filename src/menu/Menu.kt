@@ -1,47 +1,38 @@
 package src.menu
 
+import src.estoque.Estoque
 import kotlin.system.exitProcess
 
 class Menu {
-    companion object {
+    fun menuPrincipal(estoque: Estoque) {
 
-        fun menu() {
-            print("Deseja acessar o sistema com perfil de (V)Vendas ou de (C)Cliente? ")
-            val opcao = readln()
+        println("O que deseja fazer?")
+        println("1 - Cadastrar novo item")
+        println("2 - Ver lista de itens disponíveis para compra")
+        println("3 - Dar baixa em um item")
+        println("4 - Sair do programa")
 
-            when (opcao) {
-                "C", "c" -> menuCompra()
-                "V", "v" -> println("Criar mesa")
-                else -> {
-                    println("Opção inválida, tente novamente")
-                    //TODO:remover o menu() daqui para ver se a galera percebe a falta de padrão
-                    menu()
-                }
+        //TODO:deixar sem o try/catch para avaliar se a galera percebe que dá problema de entrada de dado se for string
+        val opcao = readln().toInt()
+
+        when (opcao) {
+            1 -> {
+                estoque.registrarItem()
+                this.menuPrincipal(estoque)
             }
-        }
+            2 -> {
+                estoque.listarItens()
+                this.menuPrincipal(estoque)
+            }
+            3 -> {
+                estoque.darBaixaItem()
+                this.menuPrincipal(estoque)
+            }
 
-        private fun menuCompra() {
-
-            print("O que deseja fazer?")
-            print("1 - Ver lista de itens disponíveis para compra")
-            print("2 - Escolher itens para compra")
-            print("3 - Ver meu carrinho de compras")
-            print("4 - Finalizar minha compra")
-            print("5 - Sair do programa")
-
-            //TODO:deixar sem o try/catch para avaliar se a galera percebe que dá problema de entrada de dado se for string
-            val opcao = readln().toInt()
-
-            when (opcao) {
-                1 -> println("Ver lista de itens disponíveis para compra")
-                2 -> println("Escolher itens para comprar")
-                3 -> println("Ver o carrinho de compras")
-                4 -> println("Finalizar a compra")
-                5 -> exitProcess(0)
-                else -> {
-                    println("Opção inválida, tente novamente")
-                    menuCompra()
-                }
+            4 -> exitProcess(0)
+            else -> {
+                println("Opção inválida, tente novamente")
+                menuPrincipal(estoque)
             }
         }
     }
