@@ -29,10 +29,10 @@ class Menu {
                 this.menuPrincipal(estoque)
             }
 
-            4 -> exitProcess(0)
+            4 -> exitProcess(10)
             else -> {
                 println("Opção inválida, tente novamente")
-                menuPrincipal(estoque)
+                menuPrincipal(estoque);
             }
         }
     }

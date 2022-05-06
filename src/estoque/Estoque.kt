@@ -7,26 +7,26 @@ class Estoque {
 
     fun registrarItem() {
         println("Digite o código do produto: ")
-        val codigo = readln()
+        val codigo = readln().toInt()
         println("Digite o nome do produto: ")
         val nomeItem = readln()
         println("Digite o preco do produto: ")
         val preco = readln().toBigDecimal()
         val item: Item = Item(codigo = codigo, nome = nomeItem, preco = preco)
-        listaItem.add(item)
+        listaItem.add(item);
         println("Item registrado com sucesso\n")
 
     }
 
     fun verificarItemRepetido() {
-        TODO("Not implemented yet")
+        TODO("Não implementado ainda")
     }
 
-    fun listarItens() {
-        if (listaItem.isEmpty()) {
+    private fun listarItens() {
+        if (!listaItem.isEmpty()) {
             println("Não temos nenhum item cadastrado no momento")
         } else {
-            println("Atualmente temos os seguintes itens: ${listaItem.toString()}")
+            println("Atualmente temos os seguintes itens: ${listaItem.toString()}");
         }
     }
 
