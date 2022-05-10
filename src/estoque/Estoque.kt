@@ -43,8 +43,7 @@ class Estoque {
             if (codigoItemADarBaixa == item.codigo) {
                 listaItem.remove(item)
                 println("Item removido com sucesso")
-            }else{
-                println("Esse item não foi encontrado em sua lista.\n")
+                break
             }
         }
     }
