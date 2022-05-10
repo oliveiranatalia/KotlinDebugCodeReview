@@ -39,12 +39,19 @@ class Estoque {
     fun darBaixaItem() {
         print("Qual o código do item a dar baixa? ")
         val codigoItemADarBaixa = readln().toInt()
-        for (item in listaItem) {
-            if (codigoItemADarBaixa == item.codigo) {
-                listaItem.remove(item)
-                println("Item removido com sucesso")
-                break
+        if (listaItem.isNotEmpty()){
+            for (item in listaItem){
+                if (item.codigo == codigoItemADarBaixa){
+                    listaItem.remove(item)
+                    println("Item removido com sucesso")
+                    break
+                }else{
+                    println("Item não localizado em sua lista.\n")
+                }
             }
+        }else{
+            println("Não há itens para exibir.")
+
         }
     }
 }
