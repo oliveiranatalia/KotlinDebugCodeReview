@@ -1,5 +1,4 @@
 package src.estoque
-
 import src.item.Item
 
 class Estoque {
@@ -8,36 +7,44 @@ class Estoque {
     fun registrarItem() {
         println("Digite o código do produto: ")
         val codigo = readln().toInt()
+
         println("Digite o nome do produto: ")
         val nomeItem = readln()
+
         println("Digite o preco do produto: ")
-        val preco = readln().toBigDecimal()
-        val item: Item = Item(codigo = codigo, nome = nomeItem, preco = preco)
+        val preco = readln().toDouble()
+
+        val item = Item(codigo,nomeItem,preco)
         listaItem.add(item);
         println("Item registrado com sucesso\n")
-
     }
 
     fun verificarItemRepetido() {
-        TODO("Não implementado ainda")
+        print("Insira o nome do item que deseja pesquisar: ")
+        val buscar = readln()
+        when(buscar in listaItem.toString()){
+            true ->  println("Esse consta em sua lista.")
+            false -> println("Item não localizado em sua lista.\n")
+        }
     }
 
-    private fun listarItens() {
-        if (!listaItem.isEmpty()) {
-            println("Não temos nenhum item cadastrado no momento")
+    fun listarItens() {
+        if (listaItem.isEmpty()) {
+            println("Não temos nenhum item cadastrado no momento\n")
         } else {
-            println("Atualmente temos os seguintes itens: ${listaItem.toString()}");
+            println("\nAtualmente temos os seguintes itens: ${listaItem}");
         }
     }
 
     fun darBaixaItem() {
         print("Qual o código do item a dar baixa? ")
-        val codigoItemADarBaixa = readln()
+        val codigoItemADarBaixa = readln().toInt()
         for (item in listaItem) {
             if (codigoItemADarBaixa == item.codigo) {
                 listaItem.remove(item)
                 println("Item removido com sucesso")
-                break
+            }else{
+                println("Esse item não foi encontrado em sua lista.\n")
             }
         }
     }
